@@ -4,10 +4,10 @@
   "scripts": {
     "ng": "ng",
     "dev": "ng serve",
-    "build": "ng build && ng run mdtest1:server",
-    "start": "node dist/mdtest1/server/main.mjs",
-    "serve:ssr": "node dist/mdtest1/server/main.mjs",
-    "build:ssr": "ng build && ng run mdtest1:server"
+    "build": "npm run build:ssr",
+    "build:ssr": "ng build && ng run mdtest1:server",
+    "start": "node dist/mdtest1/server/server.mjs",
+    "start:ssr": "npm run build:ssr && npm run start"
   },
   "private": true,
   "type": "module",
