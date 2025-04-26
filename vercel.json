@@ -18,5 +18,5 @@
     }
   ],
   "buildCommand": "npm run build:ssr",
-  "outputDirectory": "dist/mdtest1/browser"
+  "outputDirectory": "dist/mdtest1/server"
 }
