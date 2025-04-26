@@ -7,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  constructor() {}
+
+  ngOnInit() {
+    console.log('Home component initialized!');
+    localStorage.setItem('test', 'value');
+  }
 
 }
