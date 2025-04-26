@@ -5,7 +5,7 @@ import { Component, Inject, PLATFORM_ID } from '@angular/core';
   selector: 'app-home',
   imports: [],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
@@ -20,7 +20,7 @@ export class HomeComponent {
     }
 
     console.log('Home component initialized!');
-    localStorage.setItem('test', 'value');
+    if (isPlatformBrowser(this.platformId))
+      localStorage.setItem('test', 'value');
   }
-
 }
