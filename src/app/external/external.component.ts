@@ -22,7 +22,7 @@ export class ExternalComponent {
   ) {}
 
   ngOnInit() {
-    if (isPlatformServer(this.platformId)) {
+    // if (isPlatformServer(this.platformId)) {
       this.http
         .get('/external-html', { responseType: 'text' })
         .subscribe((html) => {
@@ -30,7 +30,7 @@ export class ExternalComponent {
           if (html)
             this.externalHtml = this.sanitizer.bypassSecurityTrustHtml(html);
         });
-    }
+    // }
   }
 
   checkButton(){
