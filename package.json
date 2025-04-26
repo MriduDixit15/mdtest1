@@ -10,6 +10,7 @@
     "serve:ssr:mdtest1": "node dist/mdtest1/server/server.mjs"
   },
   "private": true,
+  "type": "module",
   "dependencies": {
     "@angular/common": "^19.2.0",
     "@angular/compiler": "^19.2.0",
