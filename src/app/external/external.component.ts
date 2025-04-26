@@ -1,4 +1,4 @@
-// import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformServer } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
@@ -6,7 +6,7 @@ import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-external',
   imports: [
-    // CommonModule
+    CommonModule
   ],
   templateUrl: './external.component.html',
   styleUrl: './external.component.scss'
@@ -21,15 +21,15 @@ export class ExternalComponent {
   ) {}
 
   ngOnInit() {
-    // if (isPlatformServer(this.platformId)) {
-      // this.http
-      //   .get('/external-html', { responseType: 'text' })
-      //   .subscribe((html) => {
-      //     console.log(html);
-      //     if (html)
-      //       this.externalHtml = this.sanitizer.bypassSecurityTrustHtml(html);
-      //   });
-    // }
+    if (isPlatformServer(this.platformId)) {
+      this.http
+        .get('/external-html', { responseType: 'text' })
+        .subscribe((html) => {
+          console.log(html);
+          if (html)
+            this.externalHtml = this.sanitizer.bypassSecurityTrustHtml(html);
+        });
+    }
   }
 
   checkButton(){
