@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 
 @Component({
   selector: 'app-about',
@@ -9,9 +10,16 @@ import { Component } from '@angular/core';
 export class AboutComponent {
   localstValue: string = '';
   localstssrValue: string = '';
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      console.log('🌐 Loaded on Browser about (Client-side)');
+    }
+
+    if (isPlatformServer(this.platformId)) {
+      console.log('🖥️ Loaded on Server about (Server-side)');
+    }
     console.log('About component initialized!');
     localStorage.setItem('testinssr', 'value');
     this.localstValue = localStorage.getItem('test') ?? 'not set';
