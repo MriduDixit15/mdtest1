@@ -1,3 +1,6 @@
 <p>about works!</p>
 <div>LOCAL st : {{localstValue}}</div>
 <div>LOCAL ssr st : {{localstssrValue}}</div>
+
+
+@defer (hydrate on idle) { <app-external></app-external>} @placeholder { <div>Large component placeholder</div>}

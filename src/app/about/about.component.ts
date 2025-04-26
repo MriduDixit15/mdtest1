@@ -1,9 +1,10 @@
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { ExternalComponent } from '../external/external.component';
 
 @Component({
   selector: 'app-about',
-  imports: [],
+  imports: [ExternalComponent],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })
@@ -22,10 +23,10 @@ export class AboutComponent {
     }
     console.log('About component initialized!');
     if (typeof window !== 'undefined') {
-    localStorage.setItem('testinssr', 'value');
-    this.localstValue = localStorage.getItem('test') ?? 'not set';
-    this.localstssrValue = localStorage.getItem('testinssr') ?? 'not set';
-    console.log(this.localstValue);
+      localStorage.setItem('testinssr', 'value');
+      this.localstValue = localStorage.getItem('test') ?? 'not set';
+      this.localstssrValue = localStorage.getItem('testinssr') ?? 'not set';
+      console.log(this.localstValue);
     }
   }
 }
