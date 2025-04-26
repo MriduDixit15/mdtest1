@@ -21,9 +21,11 @@ export class AboutComponent {
       console.log('🖥️ Loaded on Server about (Server-side)');
     }
     console.log('About component initialized!');
+    if (typeof window !== 'undefined') {
     localStorage.setItem('testinssr', 'value');
     this.localstValue = localStorage.getItem('test') ?? 'not set';
     this.localstssrValue = localStorage.getItem('testinssr') ?? 'not set';
     console.log(this.localstValue);
+    }
   }
 }
