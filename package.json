@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "dev": "ng serve",
-    "build": "ng build && ng run your-project-name:server",
+    "build": "ng build && ng run mdtest1:server",
     "start": "node dist/mdtest1/server/main.mjs",
     "serve:ssr": "node dist/mdtest1/server/main.mjs",
     "build:ssr": "ng build && ng run mdtest1:server"
