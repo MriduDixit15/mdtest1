@@ -1,17 +1,23 @@
-import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import {
+  CommonModule,
+  isPlatformBrowser,
+  isPlatformServer,
+} from '@angular/common';
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { ExternalComponent } from '../external/external.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-about',
-  imports: [ExternalComponent],
+  imports: [ExternalComponent, CommonModule, HttpClientModule],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })
 export class AboutComponent {
   localstValue: string = '';
+  apiresp: any;
   localstssrValue: string = '';
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object,private http: HttpClient,) {}
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
@@ -28,5 +34,11 @@ export class AboutComponent {
       this.localstssrValue = localStorage.getItem('testinssr') ?? 'not set';
       console.log(this.localstValue);
     }
+
+    this.http
+      .get('https://prod.api.sbazar.app/product/search?query=""').subscribe((test: any) => {
+        console.log(test);
+        this.apiresp = test;
+      });
   }
 }
