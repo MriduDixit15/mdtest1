@@ -2,17 +2,14 @@ import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { provideClientHydration, withIncrementalHydration } from '@angular/platform-browser';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     // provideClientHydration(withEventReplay()),
-    provideClientHydration()
+    provideClientHydration(withIncrementalHydration())
   ]
 };
-function withIncrementalHydration(): import("@angular/platform-browser").HydrationFeature<import("@angular/platform-browser").HydrationFeatureKind> {
-  throw new Error('Function not implemented.');
-}
 
