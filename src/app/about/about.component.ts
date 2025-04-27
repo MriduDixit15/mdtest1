@@ -41,7 +41,7 @@ export class AboutComponent {
     // if (isPlatformServer(this.platformId)) {
       alert('bjbjbj');
       this.http
-        .get('https://prod.api.sbazar.app/product/search?query=""')
+        .get('/search?query=""')
         .subscribe((test: any) => {
           console.log(test);
           this.apiresp = test;
