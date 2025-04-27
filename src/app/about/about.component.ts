@@ -6,6 +6,7 @@ import {
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { ExternalComponent } from '../external/external.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { error } from 'node:console';
 
 @Component({
   selector: 'app-about',
@@ -34,11 +35,14 @@ export class AboutComponent {
       this.localstssrValue = localStorage.getItem('testinssr') ?? 'not set';
       console.log(this.localstValue);
     }
-
+    if (isPlatformServer(this.platformId)) {
     this.http
       .get('https://prod.api.sbazar.app/product/search?query=""').subscribe((test: any) => {
         console.log(test);
         this.apiresp = test;
-      });
+      }),(error: any) => {
+        console.error('Error fetching data:', error);
+      }
+    }
   }
 }
