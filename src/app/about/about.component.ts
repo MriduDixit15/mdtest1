@@ -18,7 +18,10 @@ export class AboutComponent {
   localstValue: string = '';
   apiresp: any;
   localstssrValue: string = '';
-  constructor(@Inject(PLATFORM_ID) private platformId: Object,private http: HttpClient,) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private http: HttpClient
+  ) {}
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
@@ -35,14 +38,17 @@ export class AboutComponent {
       this.localstssrValue = localStorage.getItem('testinssr') ?? 'not set';
       console.log(this.localstValue);
     }
-    if (isPlatformServer(this.platformId)) {
-    this.http
-      .get('https://prod.api.sbazar.app/product/search?query=""').subscribe((test: any) => {
-        console.log(test);
-        this.apiresp = test;
-      }),(error: any) => {
-        console.error('Error fetching data:', error);
-      }
-    }
+    // if (isPlatformServer(this.platformId)) {
+      alert('bjbjbj');
+      this.http
+        .get('https://prod.api.sbazar.app/product/search?query=""')
+        .subscribe((test: any) => {
+          console.log(test);
+          this.apiresp = test;
+        }),
+        (error: any) => {
+          console.error('Error fetching data:', error);
+        };
+    // }
   }
 }
