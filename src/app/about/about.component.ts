@@ -39,16 +39,16 @@ export class AboutComponent {
       console.log(this.localstValue);
     }
     // if (isPlatformServer(this.platformId)) {
-      alert('bjbjbj');
-      this.http
-        .get('/search?query=""')
-        .subscribe((test: any) => {
-          console.log(test);
-          this.apiresp = test;
-        }),
-        (error: any) => {
-          console.error('Error fetching data:', error);
-        };
+      // alert('bjbjbj');
+      // this.http
+      //   .get('/search?query=""')
+      //   .subscribe((test: any) => {
+      //     console.log(test);
+      //     this.apiresp = test;
+      //   }),
+      //   (error: any) => {
+      //     console.error('Error fetching data:', error);
+      //   };
     // }
   }
 }

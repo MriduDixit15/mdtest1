@@ -16,13 +16,13 @@ export const appConfig: ApplicationConfig = {
     // provideClientHydration(withEventReplay()),
     provideClientHydration(
       withIncrementalHydration(),
-      withHttpTransferCacheOptions({
-        filter: (req: HttpRequest<unknown>) => true, // to filter
-        includeHeaders: [], // to include headers
-        includePostRequests: true, // to include POST
-        includeRequestsWithAuthHeaders: false, // to include with auth
-      })
+      // withHttpTransferCacheOptions({
+      //   filter: (req: HttpRequest<unknown>) => true, // to filter
+      //   includeHeaders: [], // to include headers
+      //   includePostRequests: true, // to include POST
+      //   includeRequestsWithAuthHeaders: false, // to include with auth
+      // })
     ),
-    provideHttpClient(withFetch()),
+    // provideHttpClient(withFetch()),
   ],
 };
