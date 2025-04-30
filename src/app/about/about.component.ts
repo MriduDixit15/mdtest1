@@ -42,7 +42,7 @@ export class AboutComponent {
     // if (isPlatformServer(this.platformId)) {
       // alert('bjbjbj');
       this.http
-        .get('https://example.com/search?query=""')
+        .get('https://fake-json-api.mock.beeceptor.com/users')
         .subscribe((test: any) => {
           console.log(test);
           this.apiresp = test;
