@@ -5,7 +5,7 @@ import {
 } from '@angular/common';
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { ExternalComponent } from '../external/external.component';
-// import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-about',
@@ -21,7 +21,7 @@ export class AboutComponent {
   localstssrValue: string = '';
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    // private http: HttpClient
+    private http: HttpClient
   ) {}
 
   ngOnInit() {
@@ -41,15 +41,15 @@ export class AboutComponent {
     }
     // if (isPlatformServer(this.platformId)) {
       // alert('bjbjbj');
-      // this.http
-      //   .get('https://example.com/search?query=""')
-      //   .subscribe((test: any) => {
-      //     console.log(test);
-      //     this.apiresp = test;
-      //   }),
-      //   (error: any) => {
-      //     console.error('Error fetching data:', error);
-      //   };
+      this.http
+        .get('https://example.com/search?query=""')
+        .subscribe((test: any) => {
+          console.log(test);
+          this.apiresp = test;
+        }),
+        (error: any) => {
+          console.error('Error fetching data:', error);
+        };
     // }
   }
 }
