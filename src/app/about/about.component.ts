@@ -5,12 +5,13 @@ import {
 } from '@angular/common';
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { ExternalComponent } from '../external/external.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { error } from 'node:console';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-about',
-  imports: [ExternalComponent, CommonModule, HttpClientModule],
+  imports: [ExternalComponent, CommonModule,
+    // HttpClientModule
+  ],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })
@@ -40,15 +41,15 @@ export class AboutComponent {
     }
     // if (isPlatformServer(this.platformId)) {
       // alert('bjbjbj');
-      // this.http
-      //   .get('/search?query=""')
-      //   .subscribe((test: any) => {
-      //     console.log(test);
-      //     this.apiresp = test;
-      //   }),
-      //   (error: any) => {
-      //     console.error('Error fetching data:', error);
-      //   };
+      this.http
+        .get('/search?query=""')
+        .subscribe((test: any) => {
+          console.log(test);
+          this.apiresp = test;
+        }),
+        (error: any) => {
+          console.error('Error fetching data:', error);
+        };
     // }
   }
 }
